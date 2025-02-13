@@ -56,13 +56,13 @@ function Module:SetupGui()
 	MainFrame.Position = UDim2.new(0.5,0,0.5,0)
 	MainFrame.BackgroundColor3 = Color3.new(0.364706, 0.364706, 0.364706)
 
-	Instance.new("UIDragDetector", MainFrame)
-
 	local CanvasGroup = Instance.new("CanvasGroup", MainFrame)
 	CanvasGroup.Name = "Container"
 	CanvasGroup.Size = UDim2.new(1,0,1,0)
 	CanvasGroup.BackgroundTransparency = 1
 	CanvasGroup.ZIndex = 999999997
+	
+	Instance.new("UIDragDetector", MainFrame)
 
 	local Title = Instance.new("TextLabel", CanvasGroup)
 	Title.Name = "Title"
@@ -251,9 +251,9 @@ if game:GetService("ReplicatedStorage"):FindFirstChild("Towers") then
 						placeholder = false
 						PlaceholderModel:Destroy()
 						ConnectionPlace:Disconnect()
-						Module.SpawnTower(v.Name)
 						connection:Disconnect()
 						game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(v.Name, PlaceholderModel.CFrame)
+						PlaceholderModel:Destroy()
 					elseif not proccesed and placeholder and input.KeyCode == Enum.KeyCode.R then
 						rotation += 15
 					elseif not proccesed and placeholder and input.KeyCode == Enum.KeyCode.Q then 
