@@ -277,7 +277,6 @@ if game:GetService("ReplicatedStorage"):FindFirstChild("Towers") then
 				connection = game:GetService("UserInputService").InputBegan:Connect(function(input, proccesed)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and placeholder and not proccesed then
 						placeholder = false
-						PlaceholderModel:Destroy()
 						ConnectionPlace:Disconnect()
 						connection:Disconnect()
 						game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(v.Name, PlaceholderModel.HumanoidRootPart.CFrame)
