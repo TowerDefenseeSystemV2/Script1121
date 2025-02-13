@@ -280,7 +280,7 @@ if game:GetService("ReplicatedStorage"):FindFirstChild("Towers") then
 						PlaceholderModel:Destroy()
 						ConnectionPlace:Disconnect()
 						connection:Disconnect()
-						game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(v.Name, PlaceholderModel.PrimaryPart.CFrame)
+						game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(v.Name, PlaceholderModel.HumanoidRootPart.CFrame)
 						PlaceholderModel:Destroy()
 					elseif not proccesed and placeholder and input.KeyCode == Enum.KeyCode.R then
 						rotation += 15
