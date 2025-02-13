@@ -81,6 +81,20 @@ function Module:SetupGui()
 	TabsFrame.Size = UDim2.new(0.3,0,0.9,0)
 	TabsFrame.BackgroundTransparency = 1
 	TabsFrame.ZIndex = 999999998
+	
+	local SearchFrame = Instance.new("TextBox", CanvasGroup)
+	SearchFrame.Name = "SearchTowers"
+	SearchFrame.Size = UDim2.new(.3,0,.15,0)
+	SearchFrame.ZIndex = 999999999
+	SearchFrame.Position = UDim2.new(.68,0,.84,0)
+	SearchFrame.PlaceholderText = "Tower Name"
+	SearchFrame.TextScaled = true
+	SearchFrame.TextColor3 = Color3.fromRGB(85, 85, 85)
+	SearchFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Instance.new("UICorner", SearchFrame).CornerRadius = UDim.new(.3,0)
+	local strokeUI = Instance.new("UIStroke", SearchFrame)
+	strokeUI.Thickness = 3
+	strokeUI.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 
 	local UiList = Instance.new("UIListLayout", TabsFrame)
 	UiList.SortOrder = Enum.SortOrder.LayoutOrder
@@ -213,9 +227,23 @@ end
 
 
 --// Main Frame
-
 Module.AddTab(MainFrame, "Spawn Towers", true)
 Module.AddTab(MainFrame, "Credits", false)
+MainFrame.Container.SearchTowers:GetPropertyChangedSignal("Text"):Connect(function()
+	for i,v in MainFrame.Container["Spawn Towers"]:GetChildren() do
+		if string.match(string.lower(v.Name), string.lower(MainFrame.Container.SearchTowers.Text)) then
+			pcall(function()
+				v.Visible = true
+			end)
+		else
+			pcall(function()
+				if v.Name ~= "Towers" then
+					v.Visible = false
+				end
+			end)
+		end
+	end
+end)
 
 local Label2 = Module.AddTextLabel(MainFrame, "Spawn Towers", "Towers")
 Label2.Text = "Towers"
