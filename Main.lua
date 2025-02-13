@@ -276,11 +276,11 @@ if game:GetService("ReplicatedStorage"):FindFirstChild("Towers") then
 				local connection
 				connection = game:GetService("UserInputService").InputBegan:Connect(function(input, proccesed)
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and placeholder and not proccesed then
+						game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(v.Name, PlaceholderModel.HumanoidRootPart.CFrame)
+						PlaceholderModel:Destroy()
 						placeholder = false
 						ConnectionPlace:Disconnect()
 						connection:Disconnect()
-						game:GetService("ReplicatedStorage"):WaitForChild("Functions"):WaitForChild("SpawnTower"):InvokeServer(v.Name, PlaceholderModel.HumanoidRootPart.CFrame)
-						PlaceholderModel:Destroy()
 					elseif not proccesed and placeholder and input.KeyCode == Enum.KeyCode.R then
 						rotation += 15
 					elseif not proccesed and placeholder and input.KeyCode == Enum.KeyCode.Q then 
