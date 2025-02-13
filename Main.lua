@@ -56,6 +56,8 @@ function Module:SetupGui()
 	MainFrame.Position = UDim2.new(0.5,0,0.5,0)
 	MainFrame.BackgroundColor3 = Color3.new(0.364706, 0.364706, 0.364706)
 
+	Instance.new("UIDragDetector", MainFrame)
+
 	local CanvasGroup = Instance.new("CanvasGroup", MainFrame)
 	CanvasGroup.Name = "Container"
 	CanvasGroup.Size = UDim2.new(1,0,1,0)
