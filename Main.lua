@@ -254,6 +254,7 @@ if game:GetService("ReplicatedStorage"):FindFirstChild("Towers") then
 			SpawnTowerButton.Text = v.Name .. " " .. v.Config.Price.Value .. "$"
 			
 			SpawnTowerButton.Activated:Connect(function()
+				print("Activated:", v.Name)
 				local PlaceholderModel = v:Clone()
 				PlaceholderModel.Parent = workspace
 				
